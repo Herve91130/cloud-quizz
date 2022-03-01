@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Commentaires{% endblock %}
+
+{% block stylesheets %}
+            {#{{ encore_entry_link_tags('app') }}#}
+            <link rel="stylesheet" href="{{ asset("css/nuage.css") }}">
+{% endblock %}
+
+{% block body %}
+    <h1 class="my-5 text-center">Commentaires</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ commentaire.id }}</td>
+            </tr>
+            <tr>
+                <th>Parent</th>
+                <td>{{ commentaire.parent }}</td>
+            </tr>
+            <tr>
+                <th>User</th>
+                <td>{{ commentaire.user }}</td>
+            </tr>
+            <tr>
+                <th>Jeux Quizz</th>
+                <td>{{ commentaire.jeuxQuizz.Jeux }}</td>
+            </tr>
+            <tr>
+                <th>Contenu</th>
+                <td>{{ commentaire.contenu }}</td>
+            </tr>
+            <tr>
+                <th>Created_at</th>
+                <td>{{ commentaire.createdAt ? commentaire.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Rgpd</th>
+                <td>{{ commentaire.rgpd ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('commentaires_index') }}" class="btn btn-primary">Retour à la liste</a>
+
+    <a href="{{ path('commentaires_edit', {'id': commentaire.id}) }}" class="btn btn-warning">Modifier</a>
+
+    {{ include('commentaires/_delete_form.html.twig') }}
+{% endblock %}

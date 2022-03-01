@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier l'utilisateur
+{% endblock %}
+
+{% block body %}
+	<h1 class="my-5 text-center">Modifier l'utilisateur</h1>
+
+	<div class="card text-dark bg-warning mb-3" style="max-width: 23rem;">
+		<div class="card-header">
+            <h5 class="card-title">⚠️ Rappel à propos des rôles ⚠️</h5>
+        </div>
+		<div class="card-body">
+            <ul class="pricing-list text-start">
+				<li>
+					<p>Administrateur => ROLE_ADMIN</p>
+				</li>
+				<li>
+					<p>Moderateur => ROLE_MODERATOR</p>
+				</li>
+				<li>
+					<p>Utilisateur premium => ROLE_PREMIUM_USER</p>
+				</li>
+				<li>
+					<p>Utilisateur => ROLE_USER</p>
+				</li>
+			</ul>		
+        </div>
+	</div>
+
+	{{ include('user/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+	<a href="{{ path('user_index') }}" class="btn btn-primary">Retour à la liste</a>
+
+	{{ include('user/_delete_form.html.twig') }}
+{% endblock %}

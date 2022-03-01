@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer de nouvelles QuestionQuizz{% endblock %}
+
+{% block body %}
+    <h1>Créer de nouvelles QuestionQuizz</h1>
+
+    {{ include('question_quizz/_form.html.twig') }}
+
+    <a href="{{ path('question_quizz_index') }}" class="btn btn-primary">Retour à la liste</a>
+{% endblock %}

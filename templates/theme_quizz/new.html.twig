@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau ThemeQuizz{% endblock %}
+
+{% block body %}
+    <h1>Créer un nouveau ThemeQuizz</h1>
+
+    {{ include('theme_quizz/_form.html.twig') }}
+
+    <a href="{{ path('theme_quizz_index') }}" class="btn btn-primary">Retour à la liste</a>
+{% endblock %}

@@ -1,0 +1,81 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Contactez nous
+{% endblock %}
+
+{% block body %}
+	<main>   
+		<div class="container mt-5">
+			<div class="row">
+				{% for message in app.flashes('message') %}
+					<div class="col-9 col-md-9 col-lg-9">
+						<div class="alert alert-success text-center" role="alert">{{message}}</div>
+					</div>
+				{% endfor %}
+				<div class="card-contact col-12 col-lg-8">
+					<div class="card-header header-profil-user">
+						<h3 class="modal-title text-white text-center">📧 Contactez nous ! 📧</h3>
+					</div>
+					<div class="card-body body-profil-user">
+						<div class="mt-1">
+							{{ form_start(contactForm, { attr: { class: 'was-validated' } }) }}
+							<div class="row">
+								<div class="col-12 col-lg-6">
+									{{ form_row(contactForm.nom, { label: "Nom:" }) }}
+									<div id="validationServer01Feedback" class="invalid-feedback">
+										Veuillez inscrire votre nom ci-dessus.
+									</div>
+								</div>
+								<div class="col-12 col-lg-6">
+									{{ form_row(contactForm.prenom, { label: "Prénom:" }) }}
+									<div id="validationServer02Feedback" class="invalid-feedback">
+										Veuillez inscrire votre prénom ci-dessus.
+									</div>
+								</div>
+								<div class="mt-3 col-md-12">
+									{{ form_row(contactForm.email, { label: "Votre adresse Email:" }) }}
+									<div id="email1Feedback" class="invalid-feedback">
+										Veuillez inscrire votre Email ci-dessus.
+									</div>
+								</div>
+								<div class="mt-3 col-md-12">
+									{{ form_row(contactForm.titre, { label: "Objet:" }) }}
+									<div id="email1Feedback" class="invalid-feedback">
+										Veuillez inscrire l'objet de votre message ci-dessus.
+									</div>
+								</div>
+								<div class="mt-3 col-md-12">
+									{{ form_row(contactForm.message, { label: "Message:" }) }}
+									<div id="email1Feedback" class="invalid-feedback">
+										Veuillez inscrire votre Message ci-dessus.
+									</div>
+								</div>
+							</div>
+							<div class="mt-4 col-12">
+								<button type="submit" value="Send" class="btn btn-primary">Envoyer</button>
+							</div>
+							{{ form_end(contactForm) }}
+						</div>
+					</div>
+				</div>
+				<div class="col-11 mx-auto col-lg-4">
+					<div class="card card-mention">
+					    <div class="card-header header-profil-user">
+						    <h3 class="modal-title text-white text-center">Mentions légales</h3>
+					    </div>
+						<div class="card-body body-mention">
+							<p class="card-text fw-bold text-primary">Le fournisseur du service, éditeur du site, directeur de publication et responsable du traitement des données est :</p>
+							<p class="card-text text-center text-primary">Hervé N'Goma</p>
+							<p class="card-text fw-bold text-center text-primary">SIREN : </p>
+							<p class="card-text text-center text-primary">385 639 527</p>
+							<p class="card-text fw-bold text-center text-primary">Siège social :</p>
+							<p class="card-text text-center text-primary">55 Rue du Faubourg Saint-Honoré, 75008 Paris</p>
+							<p class="card-text fw-bold text-center text-primary">Les différents moyens de contact sont :</p>
+							<p class="card-text text-center text-primary">L'adresse mail : contact@cloud-quizz.fr</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+{% endblock %}

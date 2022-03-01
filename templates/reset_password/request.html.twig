@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Réinitialiser votre mot de passe{% endblock %}
+
+{% block body %}
+            <div class="container mt-5">
+	            <div class="row justify-content-center rowpassword">
+		            <div class="col-lg-9 col-md-9 col-sm-9">
+			            <div class="card card-password mt-5">
+				            <div class="card-header header-password">
+					            <h4 class="modal-title text-white text-center">Réinitialiser votre mot de passe</h4>
+				            </div>
+				            <div class="card-body body-password">
+	                            {{ form_start(requestForm, { attr: { class: 'was-validated' } }) }}
+	                            {{ form_row(requestForm.email, { label: "Adresse Email" }) }}
+	                                <div  id="email1Feedback" class="invalid-feedback">
+		                                <small>
+			                                Veuillez inscrire votre adresse mail et nous vous enverrons un lien pour réinitialiser votre mot de passe.
+		                                </small>
+	                                </div><br>                
+	                                <button class="btn btn-primary">Envoyé le mail de réinitialisation de mot de passe</button>
+	                            {{ form_end(requestForm) }}
+                            </div>
+			            </div>
+		            </div>
+	            </div>
+            </div>
+{% endblock %}

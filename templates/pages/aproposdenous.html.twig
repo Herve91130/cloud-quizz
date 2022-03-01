@@ -1,0 +1,39 @@
+{% extends "base.html.twig" %}
+
+{% block title %}À propos de nous{% endblock %}
+
+{% block stylesheets %}
+            {#{{ encore_entry_link_tags('app') }}#}
+            <link rel="stylesheet" href="{{ asset("css/nuage.css") }}">
+{% endblock %}
+
+{% block body %}
+<main>
+        <div class="container mt-5 mt-lg-5">
+            <h3 class="fw-bold">Bienvenue sur <span class="m">C</span><span class="j">L</span><span class="b">O</span><span class="r">U</span><span class="m">D</span> <span class="j">Q</span><span class="r">UI</span><span class="m">Z</span><span class="b">Z </span>!</h3><br><br>
+            <p class="fw-bold">Cloud Quizz est un jeu vidéo de culture générale sur le principe du quizz, questionnaire à choix
+                multiples disponible sur tous les navigateurs récents. Rapide et gratuite, les parties ordinaires sont
+                en duel contre un adversaire au hasard, ou contre un ami sélectionné. D'autres parties sont seul afin de
+                tester son niveau en essayant d'aller le plus loin possible.</p><br>
+            <div class="mt-1 row lg-5">
+                <img src="{{asset('images/background/rocket-2680282_960_720.jpg')}}" class="img-fluid mt-3 col-12 col-lg-4" alt="fusées" id="fusées">
+                <p class="mt-5 col-12 col-lg-8 fw-bold">Faites grandir notre communauté et rejoignez joueurs !<br><br>
+                    - Défiez vos ami !<br><br>
+                    - Choisissez votre thème préféré ! Nature, cinéma, sport ou n'importe quel autre thème.<br><br>
+                    - Partagez vos résultat.</p>
+            </div>
+            <div class="mt-5 row lg-5">
+                <p class="mt-3 col-12 col-lg-8 fw-bold">Notre vision<br><br>
+                    Amuser les joueurs n'est que le commencement. Notre but est d'atteindre encore plus de personnes en
+                    étendant Cloud Quizz sur de nouvelles plateformes.<br><br>
+                    Besoin de plus d'information ?<br>
+                    Contactez notre assistance !<br>
+                    Notre service clientèle sera ravi de vous aider via notre Email.<br><br>
+                    Service clientèle<br><br>
+                    contact@cloud-quizz.fr
+                </p>
+                <img src="{{asset('images/background/spaceman-4160023_960_720.webp')}}" class="img-fluid mt-4 col-12 col-lg-4" alt="spaceman" id="spaceman">
+            </div>
+        </div>
+</main>
+{% endblock %}

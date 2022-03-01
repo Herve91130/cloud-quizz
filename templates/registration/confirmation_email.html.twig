@@ -1,0 +1,18 @@
+<style>
+body {
+    background-image: url("../../public/images/background/nuage-3122690.png");
+}
+</style>
+
+
+<h1>Bonjour ! Veuillez confirmer votre mot de passe, s'il vous plaît !</h1>
+
+<p>
+    S'il vous plaît, confirmez votre mot de passe en cliquant sur le lien ci-dessous: <br><br>
+    <a href="{{ signedUrl }}">Confirmer mon adresse email</a>.
+    Ce lien expirera dans {{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}.
+</p>
+
+<p>
+    Merci !
+</p>

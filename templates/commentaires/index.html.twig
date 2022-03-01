@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des commentaires{% endblock %}
+
+{% block stylesheets %}
+            {#{{ encore_entry_link_tags('app') }}#}
+            <link rel="stylesheet" href="{{ asset("css/nuage.css") }}">
+{% endblock %}
+
+{% block body %}
+    <h1 class="my-5 text-center">Liste des commentaires</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Parent</th>
+                <th>User</th>
+                <th>Jeux Quizz</th>
+                <th>Contenu</th>
+                <th>Created_at</th>
+                <th>Rgpd</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for commentaire in commentaires %}
+            <tr>
+                <td>{{ commentaire.id }}</td>
+                <td>{{ commentaire.parent }}</td>
+                <td>{{ commentaire.user }}</td>
+                <td>{{ commentaire.jeuxQuizz.Jeux }}</td>
+                <td>{{ commentaire.contenu }}</td>
+                <td>{{ commentaire.createdAt ? commentaire.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ commentaire.rgpd ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('commentaires_show', {'id': commentaire.id}) }}" class="btn btn-primary">Consulter</a>
+                    <a href="{{ path('commentaires_edit', {'id': commentaire.id}) }}" class="btn btn-warning">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Aucun enregistrement trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('commentaires_new') }}" class="btn btn-primary">Créer nouveau</a>
+{% endblock %}

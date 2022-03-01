@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste QuestionQuizz{% endblock %}
+
+{% block stylesheets %}
+            {#{{ encore_entry_link_tags('app') }}#}
+            <link rel="stylesheet" href="{{ asset("css/nuage.css") }}">
+{% endblock %}
+
+{% block body %}
+    <h1 class="my-5 text-center">Liste QuestionQuizz</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Question</th>
+                <th>Choix1</th>
+                <th>Choix2</th>
+                <th>Choix3</th>
+                <th>Choix4</th>
+                <th>Reponse</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for question_quizz in question_quizzs %}
+            <tr>
+                <td>{{ question_quizz.id }}</td>
+                <td>{{ question_quizz.question }}</td>
+                <td>{{ question_quizz.choix1 }}</td>
+                <td>{{ question_quizz.choix2 }}</td>
+                <td>{{ question_quizz.choix3 }}</td>
+                <td>{{ question_quizz.choix4 }}</td>
+                <td>{{ question_quizz.reponse }}</td>
+                <td>
+                    <a href="{{ path('question_quizz_show', {'id': question_quizz.id}) }}" class="btn btn-primary">Consulter</a>
+                    <a href="{{ path('question_quizz_edit', {'id': question_quizz.id}) }}" class="btn btn-warning">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">Aucun enregistrement trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('question_quizz_new') }}" class="btn btn-primary">Créer nouveau</a>
+{% endblock %}

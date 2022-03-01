@@ -1,0 +1,428 @@
+
+/***************/
+/***  HTML   ***/
+/***************/
+
+html {
+    height: 100%;
+}
+
+body {
+    font-family: 'Mali', cursive;
+    position: relative;
+    min-height: 100%;
+    padding-bottom: 5em;
+    background-image: url("../images/background/nuage3.jpg");
+}
+
+
+/***************/
+/*** HEADER  ***/
+/***************/
+
+/* CADRES BOUTONS MENU */
+
+.nav-item1 {
+    padding: 0.2em 0.2em 0.2em 0.2em;
+    background-color: #FFEA00;
+}
+
+.nav-item2 {
+    padding: 0.2em 0.2em 0.2em 0.2em;
+    background-color: #ffffff;
+}
+
+/* LOGO  - TITRE */
+
+span.m {
+    color: #4A3535;
+}
+
+span.r {
+    color: #F31111;
+}
+
+span.b {
+    color: #113EF3;
+}
+
+span.j {
+    color: #F3BE11
+}
+
+form.d-flex {
+    display: flex;
+    margin: 20px;
+}
+
+/* BARRE DE RECHERCHE */
+
+form.d-flex input[type=search] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid #EBEBEB;
+    border-right: none;
+    border-radius: 5px 0 0 5px;
+    width: 100%;
+    background: #EBEBEB;
+}
+
+form.d-flex button {
+    /* width: 20%; */
+    padding: 10px;
+    background: #EBEBEB;
+    color: black;
+    font-size: 17px;
+    border: 1px solid #EBEBEB;
+    border-left: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+
+/***************/
+/***   MAIN  ***/
+/***************/
+
+/* ANIMATION DES CARTES */
+
+
+
+/* PAGE DE CREATION DE COMPTE */
+
+.bi-facebook {
+    color: #FFFFFF;
+}
+
+.boutonfacebook {
+    color: #FFFFFF;
+    background-color: #3758db;
+    border: #3758db;
+    border-radius: 5px 5px 5px 5px;
+    padding: 0.2em 0.5em 0.3em 0.5em;
+}
+
+.bi-google {
+    color: #FFFFFF;
+}
+
+.boutongoogle {
+    color: #FFFFFF;
+    background-color: #db5837;
+    border: #db5837;
+    border-radius: 5px 5px 5px 5px;
+    padding: 0.2em 0.5em 0.3em 0.5em;
+}
+
+.bi-twitter {
+    color: #FFFFFF;
+}
+
+.boutontwitter {
+    color: #FFFFFF;
+    background-color: #27b1c3;
+    border: #27b1c3;
+    border-radius: 5px 5px 5px 5px;
+    padding: 0.2em 0.5em 0.3em 0.5em;
+}
+
+.fa-rocket {
+    color: #0d6efd;
+}
+
+/* PAGE A PROPOS DE NOUS */
+
+#fusées {
+    border-radius: 999em;
+}
+
+#spaceman {
+    border-radius: 999em;
+}
+
+/* PAGE PANIER */
+
+.title-panier {
+    margin-bottom: 5vh
+}
+
+.card-panier {
+    margin: auto;
+    max-width: 950px;
+    width: 90%;
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 1rem;
+    border: transparent
+}
+
+@media(max-width:767px) {
+    .card {
+        margin: 3vh auto
+    }
+}
+
+.cart {
+    background-color: #fff;
+    padding: 4vh 5vh;
+    border-bottom-left-radius: 1rem;
+    border-top-left-radius: 1rem
+}
+
+@media(max-width:767px) {
+    .cart {
+        padding: 4vh;
+        border-bottom-left-radius: unset;
+        border-top-right-radius: 1rem
+    }
+}
+
+.summary {
+    background-color: #ddd;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    padding: 4vh;
+    color: #414141
+}
+
+@media(max-width:767px) {
+    .summary {
+        border-top-right-radius: unset;
+        border-bottom-left-radius: 1rem
+    }
+}
+
+.summary .col-2 {
+    padding: 0
+}
+
+.summary .col-10 {
+    padding: 0
+}
+
+.rowpanier {
+    margin: 0
+}
+
+.title b {
+    font-size: 1.5rem
+}
+
+.main-panier {
+    margin: 0;
+    padding: 2vh 0;
+    width: 100%
+}
+
+.col-2,
+.col-panier {
+    padding: 0 1vh
+}
+
+a {
+    padding: 0 1vh
+}
+
+.close {
+    margin-left: auto;
+    font-size: 0.7rem
+}
+
+.back-to-shop {
+    margin-top: 4.5rem
+}
+
+h5 {
+    margin-top: 4vh
+}
+
+hr {
+    margin-top: 1.25rem
+}
+
+#formpanier {
+    padding: 2vh 0
+}
+
+select {
+    border: 1px solid rgba(0, 0, 0, 0.137);
+    padding: 1.5vh 1vh;
+    margin-bottom: 4vh;
+    outline: none;
+    width: 100%;
+    background-color: rgb(247, 247, 247)
+}
+
+.inputform {
+    border: 1px solid rgba(0, 0, 0, 0.137);
+    padding: 1vh;
+    margin-bottom: 4vh;
+    outline: none;
+    width: 100%;
+    background-color: rgb(247, 247, 247)
+}
+
+.inputform:focus::-webkit-input-placeholder {
+    color: transparent
+}
+
+.btnpanier {
+    background-color: #000;
+    border-color: #000;
+    color: white;
+    width: 100%;
+    font-size: 0.7rem;
+    margin-top: 4vh;
+    padding: 1vh;
+    border-radius: 0
+}
+
+.btnpanier:focus {
+    box-shadow: none;
+    outline: none;
+    box-shadow: none;
+    color: white;
+    -webkit-box-shadow: none;
+    -webkit-user-select: none;
+    transition: none
+}
+
+.btnpanier:hover {
+    color: white
+}
+
+a {
+    color: black
+}
+
+a {
+    text-decoration: none
+}
+
+#code {
+    background-image: linear-gradient(to left, rgba(255, 255, 255, 0.253), rgba(255, 255, 255, 0.185)), url("https://img.icons8.com/small/16/000000/long-arrow-right.png");
+    background-repeat: no-repeat;
+    background-position-x: 95%;
+    background-position-y: center
+}
+
+.back-to-shop {
+    bottom: 0;
+    left: 0;
+}
+
+
+/* PAGE CONNEXION */
+
+.header-connexion {
+    background-color: #6198e9;
+}
+
+.header-password {
+    background-color: #6198e9;
+}
+
+.navbardlogin {
+    height: 3em;
+}
+
+.body-connexion {
+    background-image: url("../images/background/nuage4.jpg");
+}
+
+.body-password {
+    background-image: url("../images/background/nuage-3122690.png");
+}
+
+.dropdown-toggle {
+    color: #ffffff;
+}
+
+.dropdown-logout {
+    background-color: rgb(223, 60, 60);
+
+}
+
+.dropdown-menu-end {
+    background-color: rgb(223, 60, 60);
+
+}
+
+/* PAGE MON COMPTE*/
+
+.header-profil-user {
+    background-color: #6198e9;
+}
+
+.body-profil-user {
+    background-image: url("../images/background/nuage4.jpg");
+}
+
+/* PAGE JEUX */
+
+.h1-jeux{
+    margin-bottom: 3em;
+}
+
+.h3-jeux {
+    color: black;
+}
+
+.choices-jeux {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 3rem auto 3rem;
+    width: 425px;
+}
+
+.button-jeux {
+    flex: 1 0 45%;
+    width: 200px;
+    height: 80px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    margin: .4rem;
+    outline: none;
+    background: #cbcccf;
+    user-select: none;
+    font-weight: 600;
+}
+
+body .container  .choices-jeux .button-jeux:hover {
+    background: #ffa502;
+    transition: .5s;
+}
+
+body .container  .choices-jeux .button-jeux:active {
+    transform: scale(.9);
+    transition: transform .1s;
+}
+
+.p-jeux {
+    font-size: 1.3rem;
+}
+
+#progress {
+    font-size: 1.3rem;
+    color: black;
+}
+
+/* PAGE CGU */
+
+.row-cgu {
+    --bs-gutter-x: 0;
+}
+
+
+/***************/
+/***  FOOTER ***/
+/***************/
+
+footer {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin-top: 2em;
+    margin-bottom: 0px;
+}

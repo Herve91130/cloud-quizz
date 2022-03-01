@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ProduitBoutique{% endblock %}
+
+{% block stylesheets %}
+            {#{{ encore_entry_link_tags('app') }}#}
+            <link rel="stylesheet" href="{{ asset("css/nuage.css") }}">
+{% endblock %}
+
+{% block body %}
+    <h1 class="my-5 text-center">ProduitBoutique</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ produit_boutique.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ produit_boutique.titre }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ produit_boutique.image }}</td>
+            </tr>
+            <tr>
+                <th>Image_alt</th>
+                <td>{{ produit_boutique.imageAlt }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ produit_boutique.resume }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ produit_boutique.prix }}</td>
+            </tr>
+            <tr>
+                <th>Référence</th>
+                <td>{{ produit_boutique.reference }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('produit_boutique_index') }}" class="btn btn-primary">Retour à la liste</a>
+
+    <a href="{{ path('produit_boutique_edit', {'id': produit_boutique.id}) }}" class="btn btn-warning">Modifier</a>
+
+    {{ include('produit_boutique/_delete_form.html.twig') }}
+{% endblock %}

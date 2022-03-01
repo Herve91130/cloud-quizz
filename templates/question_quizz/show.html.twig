@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}QuestionQuizz{% endblock %}
+
+{% block stylesheets %}
+            {#{{ encore_entry_link_tags('app') }}#}
+            <link rel="stylesheet" href="{{ asset("css/nuage.css") }}">
+{% endblock %}
+
+{% block body %}
+    <h1>QuestionQuizz</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ question_quizz.id }}</td>
+            </tr>
+            <tr>
+                <th>Question</th>
+                <td>{{ question_quizz.question }}</td>
+            </tr>
+            <tr>
+                <th>Choix1</th>
+                <td>{{ question_quizz.choix1 }}</td>
+            </tr>
+            <tr>
+                <th>Choix2</th>
+                <td>{{ question_quizz.choix2 }}</td>
+            </tr>
+            <tr>
+                <th>Choix3</th>
+                <td>{{ question_quizz.choix3 }}</td>
+            </tr>
+            <tr>
+                <th>Choix4</th>
+                <td>{{ question_quizz.choix4 }}</td>
+            </tr>
+            <tr>
+                <th>Reponse</th>
+                <td>{{ question_quizz.reponse }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('question_quizz_index') }}" class="btn btn-primary">Retour à la liste</a>
+
+    <a href="{{ path('question_quizz_edit', {'id': question_quizz.id}) }}" class="btn btn-warning">Modifier</a>
+
+    {{ include('question_quizz/_delete_form.html.twig') }}
+{% endblock %}
