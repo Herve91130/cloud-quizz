@@ -1,6 +1,11 @@
-{% extends "basepremium.html.twig" %}
+{% extends "base.html.twig" %}
 
 {% block title %}Offre premium{% endblock %}
+
+{% block stylesheets %}
+    {#{{ encore_entry_link_tags('app') }}#}
+    <link rel="stylesheet" href="{{ asset("css/premium.css") }}">
+{% endblock %}
 
 {% block body %}
 	<main>

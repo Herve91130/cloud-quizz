@@ -26,45 +26,30 @@
 			</button>
 			<div class="collapse navbar-collapse justify-content-around" id="navbarSupportedContent">
 				<ul class="navbar-nav mb-2 mb-lg-0">
-				{% if app.user %}
 				    <li class="nav-item2">
 						<a class="nav-link text-dark" href="{{path('home')}}">Accueil</a>
 					</li>
+                    {% if app.user %}
                     <li class="nav-item1">
 						<a class="nav-link active text-dark" aria-current="page" href="{{path('moncompte')}}">Mon compte</a>
 					</li>
-					<li class="nav-item2">
-						<a class="nav-link text-dark" href="{{path('aproposdenous')}}">À propos de nous</a>
-					</li>
-					<li class="nav-item2">
-						<a class="nav-link text-dark" href="{{path('offrepremium')}}">Offre premium</a>
-					</li>
-					<li class="nav-item2">
-						<a class="nav-link text-dark" href="{{path('boutique')}}">Boutique</a>
-					</li>
-					<li class="nav-item2">
-						<a class="nav-link text-dark" href="{{path('contact')}}">Contactez nous</a>
-					</li>
-				</ul>{#
-				<form class="d-flex">
-					<input class="form-control" type="search" placeholder="Rechercher..." aria-label="Search">
-					<button class="btn btn-outline-success" type="submit">
-						<i class="fa fa-search"></i>
-					</button>
-				</form>#}
-                {% else %}
-				    <li class="nav-item2">
-						<a class="nav-link text-dark" href="{{path('home')}}">Accueil</a>
-					</li>
+                    {% else %}
                     <li class="nav-item1">
 						<a class="nav-link active text-dark" aria-current="page" href="{{path('register')}}">Créer un compte</a>
 					</li>
+                    {% endif %}
 					<li class="nav-item2">
 						<a class="nav-link text-dark" href="{{path('aproposdenous')}}">À propos de nous</a>
 					</li>
 					<li class="nav-item2">
 						<a class="nav-link text-dark" href="{{path('offrepremium')}}">Offre premium</a>
 					</li>
+                    <li class="nav-item2">
+                        <a class="nav-link text-dark" href="{{path('boutique')}}">Boutique</a>
+                    </li>
+                    <li class="nav-item2">
+                        <a class="nav-link text-dark" href="{{path('panier')}}"><i class="fas fa-shopping-cart"></i> Panier</a>
+                    </li>
 					<li class="nav-item2">
 						<a class="nav-link text-dark" href="{{path('contact')}}">Contactez nous</a>
 					</li>
@@ -75,7 +60,6 @@
 						<i class="fa fa-search"></i>
 					</button>
 				</form>#}
-                {% endif %}
 			</div>
 		</div>
 	</nav>
