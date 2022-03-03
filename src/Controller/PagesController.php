@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller;
 
+use App\Entity\JeuxQuizz;
 use App\Form\EditProfileType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -9,6 +10,8 @@ use Symfony\Component\HttpFoundation\Response;
 use App\Repository\ThemeQuizzRepository;
 use App\Repository\ProduitBoutiqueRepository;
 use App\Repository\JeuxQuizzRepository;
+use App\Repository\QuestionQuizzRepository;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class PagesController extends AbstractController
@@ -142,5 +145,76 @@ class PagesController extends AbstractController
     public function conf(): Response
     {
         return $this->render('pages/conf.html.twig');
+    }
+
+    /**
+     * @Route("/jeux/quizz/{id}/details", name="quizz_details")
+     */
+    public function quizzDetails(JeuxQuizz $jeuxQuizz, QuestionQuizzRepository $questionQuizzRepository): Response
+    {
+        $questions = $questionQuizzRepository->findBy([
+            'jeux_quizz' => $jeuxQuizz
+        ]);
+        
+        return new JsonResponse([
+            'id' => $jeuxQuizz->getId(),
+            'name' => $jeuxQuizz->getJeux(),
+            'count' => count($questions),
+            'question' => [
+                'id' => $questions[0]->getId(),
+                'text' => $questions[0]->getQuestion(),
+                'choices' => [
+                    $questions[0]->getChoix1(),
+                    $questions[0]->getChoix2(),
+                    $questions[0]->getChoix3(),
+                    $questions[0]->getChoix4()
+                ],
+                'answer' => $questions[0]->getReponse()
+            ]
+        ]);
+    }
+
+    /**
+     * @Route("/jeux/quizz/{id}/questions/{questId}/next", name="quizz_question_suivante")
+     */
+    public function quizzQuestionSuivante(JeuxQuizz $jeuxQuizz, QuestionQuizzRepository $questionQuizzRepository, int $questId): Response
+    {
+        $questions = $questionQuizzRepository->findBy([
+            'jeux_quizz' => $jeuxQuizz
+        ]);
+
+        $questionSuivante = null;
+
+        $count = count($questions);
+
+        for ($i = 0; $i < $count; ++$i) {
+
+            if ($questions[$i]->getId() == $questId) {
+
+                $questionSuivanteIndex = $i + 1;
+
+                if ($questionSuivanteIndex < $count) {
+
+                    $questionSuivante = $questions[$questionSuivanteIndex];
+                }
+                break;
+            }
+        }
+        
+        if ($questionSuivante) {
+            return new JsonResponse([
+                'id' => $questionSuivante->getId(),
+                'text' => $questionSuivante->getQuestion(),
+                'choices' => [
+                    $questionSuivante->getChoix1(),
+                    $questionSuivante->getChoix2(),
+                    $questionSuivante->getChoix3(),
+                    $questionSuivante->getChoix4()
+                ],
+                'answer' => $questionSuivante->getReponse()
+            ]);
+        }
+        
+        return new JsonResponse(null);
     }
 }
