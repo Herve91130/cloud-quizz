@@ -150,15 +150,15 @@ class PagesController extends AbstractController
     /**
      * @Route("/jeux/quizz/{id}/details", name="quizz_details")
      */
-    public function quizzDetails(JeuxQuizz $jeuxQuizz, QuestionQuizzRepository $questionQuizzRepository): Response
+    public function quizzDetails(JeuxQuizz $quizz, QuestionQuizzRepository $questionQuizzRepository): Response
     {
         $questions = $questionQuizzRepository->findBy([
-            'jeux_quizz' => $jeuxQuizz
+            'jeux_quizz' => $quizz
         ]);
         
         return new JsonResponse([
-            'id' => $jeuxQuizz->getId(),
-            'name' => $jeuxQuizz->getJeux(),
+            'id' => $quizz->getId(),
+            'name' => $quizz->getJeux(),
             'count' => count($questions),
             'question' => [
                 'id' => $questions[0]->getId(),
@@ -175,12 +175,12 @@ class PagesController extends AbstractController
     }
 
     /**
-     * @Route("/jeux/quizz/{id}/questions/{questId}/next", name="quizz_question_suivante")
+     * @Route("/jeux/quizz/{id}/questions/{quesId}/next", name="quizz_next")
      */
-    public function quizzQuestionSuivante(JeuxQuizz $jeuxQuizz, QuestionQuizzRepository $questionQuizzRepository, int $questId): Response
+    public function quizzQuestionSuivante(JeuxQuizz $quizz, QuestionQuizzRepository $questionQuizzRepository, int $questId): Response
     {
         $questions = $questionQuizzRepository->findBy([
-            'jeux_quizz' => $jeuxQuizz
+            'jeux_quizz' => $quizz
         ]);
 
         $questionSuivante = null;

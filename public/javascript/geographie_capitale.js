@@ -1,42 +1,66 @@
 class Question {
-    constructor(text, choices, answer) {
+    constructor(id, text, choices, answer) {
         this.text = text;
         this.choices = choices;
         this.answer = answer;
+        this.id =id;
     }
     isCorrectAnswer(choice) {
         return this.answer === choice;
     }
 }
 
-
-let questions = [
-    new Question("Quel est la capitale de la France ?", ["Paris", "Bruxelles", "Rome", "Londres"], "Paris"),
-    new Question("Quel est la capitale du Brésil ?", ["Rio de Janeiro", "Caracas", "Brasilia", "Bogota"], "Brasilia"),
-    new Question("Quel est la capitale de la Turquie ?", ["Jérusalem", "Ankara", "Beyrouth", "Athènes"], "Ankara"),
-    new Question("Quel est la capitale de la Chine ?", ["Pékin", "Hanoï", "Tokyo", "Séoul"], "Pékin"),
-    new Question("Quel est la capitale du Canada ?", ["Vancouver", "Wellington", "Cardiff", "Ottawa"], "Ottawa"),
-    new Question("Quel est la capitale de l'Australie ?", ["Dublin", "Toronto", "Canberra", "New York"], "Canberra"),
-    new Question("Quel est la capitale de l'Iran ?", ["Rabat", "Téhéran", "Le Caire", "Islamabad"], "Téhéran"),
-];
-
 class Quiz {
-    constructor(questions) {
+    constructor() {
         this.score = 0;
-        this.questions = questions;
         this.currentQuestionIndex = 0;
+        this.currentQuestion = null;
+        this.totalLength = 0;
+        this.quizz = null;
     }
+
+    init(quizzId, afterInit) {
+
+        //Appel AJAX vers le serveur
+        fetch(`http://localhost:8000/jeux/quizz/${quizzId}/details`)
+        .then((response) => {
+            return response.json();
+        })
+
+        //Récupération des données
+        .then((data) => {
+            this.quizz = data;
+            this.totalLength = data.count;
+            this.currentQuestion = new Question(data.question.id, data.question.text, data.question.choices, data.question.answer);
+            
+            //Fonction callback qui permet d'etre sûr que les requêtes AJAX se sont bien executées
+            afterInit();
+        });
+    }
+
     getCurrentQuestion() {
-        return this.questions[this.currentQuestionIndex];
+        return this.currentQuestion;
     }
-    guess(answer) {
+
+    guess(answer, afterGuess) {
         if (this.getCurrentQuestion().isCorrectAnswer(answer)) {
             this.score++;
         }
-        this.currentQuestionIndex++;
+        //Appel AJAX vers le serveur
+        fetch(`http://localhost:8000/jeux/quizz/${this.quizz.id}/questions/${this.currentQuestion.id}/next`)
+        .then((response) => {
+            return response.json();
+        })
+
+        //Récupération des données
+        .then((data) => {
+            this.currentQuestion = new Question(data.id, data.text, data.choices, data.answer);
+            afterGuess();
+        });
     }
+
     hasEnded() {
-        return this.currentQuestionIndex >= this.questions.length;
+        return this.currentQuestionIndex >= this.totalLength;
     }
 }
 
@@ -48,7 +72,7 @@ const display = {
     endQuiz: function () {
         endQuizHTML = `
         <h1 class="h1-jeux text-center">Quizz <span class="m">Gé</span><span class="j">og</span><span class="b">ra</span><span class="r">ph</span><span class="m">ie</span>: <span class="j">Ca</span><span class="r">pi</span><span class="m">ta</span><span class="b">le</span> terminé !</h1>
-        <h3 class="h3-jeux text-center"> Votre score est de : ${quiz.score} / ${quiz.questions.length}</h3>`;
+        <h3 class="h3-jeux text-center"> Votre score est de : ${quiz.score} / ${quiz.totalLength}</h3>`;
         this.elementShown("quiz", endQuizHTML);
     },
     question: function () {
@@ -59,8 +83,9 @@ const display = {
 
         guessHandler = (id, guess) => {
             document.getElementById(id).onclick = function () {
-                quiz.guess(guess);
-                quizApp();
+                quiz.guess(guess, () => {
+                    quizApp();
+                });
             }
         }
         // affichage choix + prise en compte du choix
@@ -71,7 +96,7 @@ const display = {
     },
     progress: function () {
         let currentQuestionNumber = quiz.currentQuestionIndex + 1;
-        this.elementShown("progress", "Question " + currentQuestionNumber + " sur " + quiz.questions.length);
+        this.elementShown("progress", "Question " + currentQuestionNumber + " sur " + quiz.totalLength);
     },
 };
 
@@ -86,5 +111,7 @@ quizApp = () => {
     }
 }
 // Create Quiz
-let quiz = new Quiz(questions);
-quizApp();
+let quiz = new Quiz();
+quiz.init(1, () => {
+    quizApp();
+});
