@@ -22,7 +22,7 @@ class Quiz {
     init(quizzId, afterInit) {
 
         //Appel AJAX vers le serveur
-        fetch(`http://localhost:8000/jeux/quizz/${quizzId}/details`)
+        fetch(`http://127.0.0.1:8000/jeux/quizz/${quizzId}/details`)
         .then((response) => {
             return response.json();
         })
@@ -46,8 +46,9 @@ class Quiz {
         if (this.getCurrentQuestion().isCorrectAnswer(answer)) {
             this.score++;
         }
+        this.currentQuestionIndex++;
         //Appel AJAX vers le serveur
-        fetch(`http://localhost:8000/jeux/quizz/${this.quizz.id}/questions/${this.currentQuestion.id}/next`)
+        fetch(`http://127.0.0.1:8000/jeux/quizz/${this.quizz.id}/questions/${this.currentQuestion.id}/next`)
         .then((response) => {
             return response.json();
         })

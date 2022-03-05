@@ -175,7 +175,7 @@ class PagesController extends AbstractController
     }
 
     /**
-     * @Route("/jeux/quizz/{id}/questions/{quesId}/next", name="quizz_next")
+     * @Route("/jeux/quizz/{id}/questions/{questId}/next", name="quizz_next")
      */
     public function quizzQuestionSuivante(JeuxQuizz $quizz, QuestionQuizzRepository $questionQuizzRepository, int $questId): Response
     {
