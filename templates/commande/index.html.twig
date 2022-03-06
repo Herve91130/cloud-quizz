@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des commandes{% endblock %}
+
+{% block stylesheets %}
+            {#{{ encore_entry_link_tags('app') }}#}
+            <link rel="stylesheet" href="{{ asset("css/nuage.css") }}">
+{% endblock %}
+
+{% block body %}
+    <h1 class="my-5 text-center">Liste des commandes</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Reference</th>
+                <th>Prix</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>StripeToken</th>
+                <th>BrandStripe</th>
+                <th>Last4Stripe</th>
+                <th>IdChargeStripe</th>
+                <th>StatusStripe</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for commande in commandes %}
+            <tr>
+                <td>{{ commande.id }}</td>
+                <td>{{ commande.reference }}</td>
+                <td>{{ commande.prix }}</td>
+                <td>{{ commande.createdAt ? commande.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ commande.updatedAt ? commande.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ commande.stripeToken }}</td>
+                <td>{{ commande.brandStripe }}</td>
+                <td>{{ commande.last4Stripe }}</td>
+                <td>{{ commande.idChargeStripe }}</td>
+                <td>{{ commande.statusStripe }}</td>
+                <td>
+                    <a href="{{ path('commande_show', {'id': commande.id}) }}" class="btn btn-primary">Consulter</a>
+                    <a href="{{ path('commande_edit', {'id': commande.id}) }}" class="btn btn-warning">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">Aucun enregistrement trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('commande_new') }}" class="btn btn-primary">Créer nouveau</a>
+{% endblock %}

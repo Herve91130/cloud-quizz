@@ -49,6 +49,16 @@ class ProduitBoutique
      */
     private $reference;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Commande::class, mappedBy="produit")
+     */
+    private $commandes;
+
+    public function __construct()
+    {
+        $this->commandes = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -129,5 +139,35 @@ class ProduitBoutique
     public function __toString()
     {
         return $this->titre;
+    }
+
+    /**
+     * @return Collection|Commande[]
+     */
+    public function getCommandes(): Collection
+    {
+        return $this->commandes;
+    }
+
+    public function addCommande(Commande $commande): self
+    {
+        if (!$this->commandes->contains($commande)) {
+            $this->commandes[] = $commande;
+            $commande->setProduit($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommande(Commande $commande): self
+    {
+        if ($this->commandes->removeElement($commande)) {
+            // set the owning side to null (unless already changed)
+            if ($commande->getProduit() === $this) {
+                $commande->setProduit(null);
+            }
+        }
+
+        return $this;
     }
 }

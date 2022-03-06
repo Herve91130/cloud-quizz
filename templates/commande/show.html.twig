@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Commande{% endblock %}
+
+{% block stylesheets %}
+            {#{{ encore_entry_link_tags('app') }}#}
+            <link rel="stylesheet" href="{{ asset("css/nuage.css") }}">
+{% endblock %}
+
+
+{% block body %}
+    <h1 class="my-5 text-center">Commande</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ commande.id }}</td>
+            </tr>
+            <tr>
+                <th>Reference</th>
+                <td>{{ commande.reference }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ commande.prix }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ commande.createdAt ? commande.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ commande.updatedAt ? commande.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>StripeToken</th>
+                <td>{{ commande.stripeToken }}</td>
+            </tr>
+            <tr>
+                <th>BrandStripe</th>
+                <td>{{ commande.brandStripe }}</td>
+            </tr>
+            <tr>
+                <th>Last4Stripe</th>
+                <td>{{ commande.last4Stripe }}</td>
+            </tr>
+            <tr>
+                <th>IdChargeStripe</th>
+                <td>{{ commande.idChargeStripe }}</td>
+            </tr>
+            <tr>
+                <th>StatusStripe</th>
+                <td>{{ commande.statusStripe }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('commande_index') }}" class="btn btn-primary">Retour à la liste</a>
+
+    <a href="{{ path('commande_edit', {'id': commande.id}) }}" class="btn btn-warning">Modifier</a>
+
+    {{ include('commande/_delete_form.html.twig') }}
+{% endblock %}
