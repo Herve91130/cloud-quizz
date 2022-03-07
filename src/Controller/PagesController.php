@@ -70,6 +70,7 @@ class PagesController extends AbstractController
     public function moncompte(CommandeRepository $commandeRepository): Response
 
     {
+        
         $user = $this->getUser();
         
         return $this->render('pages/moncompte.html.twig', [
