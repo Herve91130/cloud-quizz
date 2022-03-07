@@ -1,8 +1,8 @@
 <?php
 namespace App\Controller;
 
-use App\Entity\Commande;
 use App\Entity\JeuxQuizz;
+use App\Entity\User;
 use App\Form\EditProfileType;
 use App\Repository\CommandeRepository;
 use Symfony\Component\HttpFoundation\Request;
@@ -67,9 +67,14 @@ class PagesController extends AbstractController
     /**
      * @Route("/moncompte", name="moncompte")
      */
-    public function moncompte(): Response
+    public function moncompte(CommandeRepository $commandeRepository): Response
+
     {
-        return $this->render('pages/moncompte.html.twig');
+        $user = $this->getUser();
+        
+        return $this->render('pages/moncompte.html.twig', [
+            'commandes' => $commandeRepository->find($user),
+        ]);
     }
 
     /**

@@ -68,18 +68,18 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-									
+									{% for commande in commandes %}
                                         <tr>
-										    <td></td>
-                                            <td></td>
-											<td></td>
-                                            <td></td>
+										    <td> {{ app.user.commande.produit.titre }} </td>
+                                            <td> {{ app.user.commande.reference }} </td>
+											<td> {{ app.user.commande.prix }} </td>
+                                            <td> {{ app.user.commande.createdAt ? commande.createdAt|date('Y-m-d H:i:s') : '' }}</td>
 										</tr>
-									
+									{% else %}
                                         <tr>
                                             <td colspan="5">Aucune Commande trouvée</td>
                                         </tr>
-                                    
+                                    {% endfor %}
                                     </tbody>
                                 </table>
 							</div>
