@@ -2,8 +2,9 @@
 
 namespace App\Entity;
 
-use App\Entity\Traits\StripeTrait;
 use App\Repository\CommandeRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -11,10 +12,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Commande
 {
-    const DEVISE = 'eur';
-
-    use StripeTrait;
-    
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -23,26 +20,20 @@ class Commande
     private $id;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $reference;
+
+    /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="commandes")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
 
     /**
-     * @ORM\ManyToOne(targetEntity=ProduitBoutique::class, inversedBy="commandes")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToMany(targetEntity=ProduitBoutique::class)
      */
-    private $produit;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $reference;
-
-    /**
-     * @ORM\Column(type="float")
-     */
-    private $prix;
+    private $produits;
 
     /**
      * @ORM\Column(type="datetime_immutable")
@@ -50,37 +41,18 @@ class Commande
     private $createdAt;
 
     /**
-     * @ORM\Column(type="datetime_immutable")
+     * @ORM\Column(type="float")
      */
-    private $updatedAt;
+    private $prix;
+
+    public function __construct()
+    {
+        $this->produits = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getUser(): ?User
-    {
-        return $this->user;
-    }
-
-    public function setUser(?User $user): self
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    public function getProduit(): ?ProduitBoutique
-    {
-        return $this->produit;
-    }
-
-    public function setProduit(?ProduitBoutique $produit): self
-    {
-        $this->produit = $produit;
-
-        return $this;
     }
 
     public function getReference(): ?string
@@ -95,14 +67,38 @@ class Commande
         return $this;
     }
 
-    public function getPrix(): ?float
+    public function getUser(): ?User
     {
-        return $this->prix;
+        return $this->user;
     }
 
-    public function setPrix(float $prix): self
+    public function setUser(?User $user): self
     {
-        $this->prix = $prix;
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ProduitBoutique[]
+     */
+    public function getProduits(): Collection
+    {
+        return $this->produits;
+    }
+
+    public function addProduit(ProduitBoutique $produit): self
+    {
+        if (!$this->produits->contains($produit)) {
+            $this->produits[] = $produit;
+        }
+
+        return $this;
+    }
+
+    public function removeProduit(ProduitBoutique $produit): self
+    {
+        $this->produits->removeElement($produit);
 
         return $this;
     }
@@ -119,14 +115,14 @@ class Commande
         return $this;
     }
 
-    public function getUpdatedAt(): ?\DateTimeImmutable
+    public function getPrix(): ?float
     {
-        return $this->updatedAt;
+        return $this->prix;
     }
 
-    public function setUpdatedAt(\DateTimeImmutable $updatedAt): self
+    public function setPrix(float $prix): self
     {
-        $this->updatedAt = $updatedAt;
+        $this->prix = $prix;
 
         return $this;
     }

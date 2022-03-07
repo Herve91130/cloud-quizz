@@ -20,7 +20,7 @@
                                 <p class="card-text">{{ produit_boutique.resume }}</p><br>
                                 <p class="card-text">{{ produit_boutique.prix }}€</p>
                                 {% if app.user %}
-                                <a href="{{ path('add_article_panier', {'id':produit_boutique.id}) }}" class="btn btn-primary d-flex justify-content-center">Ajouter au panier</a>
+                                <a href="{{ path('add_article_panier', {'id':produit_boutique.id}) }}" class="btn btn-primary d-flex justify-content-center">Précommander</a>
                                 {% else %}
                                 <a class="btn btn-primary d-flex justify-content-center">Veuillez vous connecter</a>
                                 {% endif %}

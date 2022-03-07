@@ -4,6 +4,9 @@ namespace App\Controller;
 
 use Stripe\Stripe;
 use App\Classes\Panier;
+use App\Entity\Commande;
+use App\Repository\ProduitBoutiqueRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Stripe\Checkout\Session;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -44,8 +47,21 @@ class PaymentController extends AbstractController
     /**
      * @Route("/sucess_url", name="sucess_url")
      */
-    public function sucessUrl(): Response
+    public function sucessUrl(Panier $panierService, ProduitBoutiqueRepository $produitBoutiqueRepository, EntityManagerInterface $entityManager): Response
     {
+        $commande = new Commande();
+        $commande->setUser($this->getUser());
+        $commande->setReference(strval(random_int(0, 999999)));
+        $panier = $panierService->getPanier();
+        foreach ($panier as $productId => $quantity) {
+            $produit = $produitBoutiqueRepository->find($productId);
+            $commande->addProduit($produit);
+        }
+        $commande->setPrix($produit->getPrix());
+        $commande->setCreatedAt(new \DateTimeImmutable());
+        $entityManager->persist($commande);
+        $entityManager->flush();
+        
         return $this->render('payment/sucess.html.twig', []);
     }
 

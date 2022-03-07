@@ -49,13 +49,10 @@
 										<p><i class="valide bi bi-check-circle"></i> Accès aux Forums</p>
 									</li>
 									<li>
-										<p><i class="nonvalide bi bi-check-circle"></i> Poster sur les Forums</p>
+										<p><i class="nonvalide bi bi-dash-circle"></i> Poster sur les Forums</p>
 									</li>
 									<li>
-										<p><i class="nonvalide bi bi-dash-circle"></i> Accès au contenu à la boutique</p>
-									</li>
-									<li>
-										<p><i class="nonvalide bi bi-dash-circle"></i> Accès au contenu additionnel</p>
+										<p><i class="nonvalide bi bi-dash-circle"></i> Acheter des articles</p>
 									</li>
 									<li>
 									    <p><i class="nonvalide bi bi-dash-circle"></i> Contenu additionnel gratuit</p>
@@ -101,10 +98,7 @@
 										<p><i class="valide bi bi-check-circle"></i> Poster sur les Forums</p>
 									</li>
 									<li>
-										<p><i class="valide bi bi-check-circle"></i> Accès au contenu à la boutique</p>
-									</li>
-									<li>
-										<p><i class="valide bi bi-check-circle"></i> Accès au contenu additionnel</p>
+										<p><i class="valide bi bi-check-circle"></i> Acheter des articles</p>
 									</li>
 									<li>
 									    <p><i class="nonvalide bi bi-dash-circle"></i> Contenu additionnel gratuit</p>
@@ -132,7 +126,7 @@
 								<ul class="pricing-list text-start">
 									<li>
 										<p><i class="valide bi bi-check-circle"></i> Accès aux jeux</p>
-									</li>{#
+									</li>{#}
 									<li>
 										<p><i class="valide bi bi-check-circle"></i> Déffiez vos amis</p>
 									</li>
@@ -149,10 +143,7 @@
 										<p><i class="valide bi bi-check-circle"></i> Poster sur les Forums</p>
 									</li>
 									<li>
-										<p><i class="valide bi bi-check-circle"></i> Accès au contenu à la boutique</p>
-									</li>
-									<li>
-										<p><i class="valide bi bi-check-circle"></i> Accès au contenu additionnel</p>
+										<p><i class="valide bi bi-check-circle"></i> Acheter des articles</p>
 									</li>
 									<li>
 									    <p><i class="valide bi bi-check-circle"></i> Contenu additionnel gratuit</P>
@@ -160,6 +151,7 @@
 								</ul>
 							</div>
 							<div class="pricing-footer">
+							        <a href="#" class="main-btn primary-btn d-block">Prochainement</a>{#}
 							{% if app.user %}
 							    {% if is_granted('ROLE_PREMIUM_USER') %}
 								    <a href="#" class="main-btn primary-btn d-block">Vous êtes déjà abonné</a>
@@ -168,7 +160,7 @@
 								{% endif %}
 							{% else %}
 							    <a href="{{path('login')}}" class="main-btn primary-btn d-block">Veuillez vous connecter</a>
-							{% endif %}
+							{% endif %}#}
 							</div>
 						</div>
 					</div>

@@ -1,8 +1,10 @@
 <?php
 namespace App\Controller;
 
+use App\Entity\Commande;
 use App\Entity\JeuxQuizz;
 use App\Form\EditProfileType;
+use App\Repository\CommandeRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;

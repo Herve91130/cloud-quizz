@@ -18,7 +18,6 @@ class CommandeController extends AbstractController
 /**
  * @Route ("/admin")
  */
-
 {
     /**
      * @Route("/liste-commande", name="commande_index", methods={"GET"})

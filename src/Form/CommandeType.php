@@ -13,16 +13,10 @@ class CommandeType extends AbstractType
     {
         $builder
             ->add('reference')
-            ->add('prix')
             ->add('createdAt')
-            ->add('updatedAt')
-            ->add('stripeToken')
-            ->add('brandStripe')
-            ->add('last4Stripe')
-            ->add('idChargeStripe')
-            ->add('statusStripe')
+            ->add('prix')
             ->add('user')
-            ->add('produit')
+            ->add('produits')
         ;
     }
 
