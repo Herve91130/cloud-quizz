@@ -134,7 +134,7 @@ class PagesController extends AbstractController
     /**
      * @Route("/jeux/geographie/capitale", name="geographie_capitale")
      */
-    public function geographiecapitale(): Response
+    public function geographieCapitale(): Response
     {
         return $this->render('pages/jeux/geographie/geographie_capitale.html.twig');
     }

@@ -72,7 +72,7 @@ const display = {
     },
     endQuiz: function () {
         endQuizHTML = `
-        <h1 class="h1-jeux text-center">Quizz <span class="m">Gé</span><span class="j">og</span><span class="b">ra</span><span class="r">ph</span><span class="m">ie</span>: <span class="j">Ca</span><span class="r">pi</span><span class="m">ta</span><span class="b">le</span> terminé !</h1>
+        <h1 class="h1-jeux text-center"><span class="j">Q</span><span class="r">UI</span><span class="m">Z</span><span class="b">Z</span> terminé !</h1>
         <h3 class="h3-jeux text-center"> Votre score est de : ${quiz.score} / ${quiz.totalLength}</h3>`;
         this.elementShown("quiz", endQuizHTML);
     },

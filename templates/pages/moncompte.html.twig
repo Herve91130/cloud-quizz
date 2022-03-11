@@ -64,16 +64,20 @@
 										    <th>Produit</th>
                                             <th>Reference</th>
 											<th>Prix</th>
-                                            <th>CreatedAt</th>
+                                            <th>Dâte</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-									{% for commande in commandes %}
+									{% for commande in app.user.commandes %}
                                         <tr>
-										    <td> {{ app.user.commande.produit.titre }} </td>
-                                            <td> {{ app.user.commande.reference }} </td>
-											<td> {{ app.user.commande.prix }} </td>
-                                            <td> {{ app.user.commande.createdAt ? commande.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+										    <td>    
+											    {% for produit in commande.produits %}
+											        <div>{{ produit.titre }}</div>
+											    {% endfor %}
+											</td>
+                                            <td> {{ commande.reference }} </td>
+											<td> {{ commande.prix }} </td>
+                                            <td> {{ commande.createdAt ? commande.createdAt|date("d/m/Y H:i") : '' }}</td>
 										</tr>
 									{% else %}
                                         <tr>

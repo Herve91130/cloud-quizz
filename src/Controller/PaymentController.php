@@ -57,7 +57,7 @@ class PaymentController extends AbstractController
             $produit = $produitBoutiqueRepository->find($productId);
             $commande->addProduit($produit);
         }
-        $commande->setPrix($produit->getPrix());
+        $commande->setPrix($panierService->getTotalePanier());
         $commande->setCreatedAt(new \DateTimeImmutable());
         $entityManager->persist($commande);
         $entityManager->flush();
