@@ -13,11 +13,9 @@ class JeuxQuizzType extends AbstractType
     {
         $builder
             ->add('Jeux')
-            ->add('Lien')
-            ->add('Lien_forum')
             ->add('Image')
             ->add('ImageAlt')
-            ->add('themeQuizz_id')
+            ->add('themeQuizz')
         ;
     }
 

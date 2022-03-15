@@ -15,8 +15,7 @@
             <tr>
                 <th>Id</th>
                 <th>Jeux</th>
-                <th>Lien</th>
-                <th>Lien forum</th>
+                <th>Thème</th>
                 <th>Image</th>
                 <th>ImageAlt</th>
                 <th>actions</th>
@@ -27,13 +26,12 @@
             <tr>
                 <td>{{ jeux_quizz.id }}</td>
                 <td>{{ jeux_quizz.Jeux }}</td>
-                <td>{{ jeux_quizz.lien }}</td>
-                <td>{{ jeux_quizz.lienForum }}</td>
+                <td>{{ jeux_quizz.themeQuizz.titre }}</td>
                 <td>{{ jeux_quizz.image }}</td>
                 <td>{{ jeux_quizz.ImageAlt }}</td>
                 <td>
                     <a href="{{ path('jeux_quizz_show', {'id': jeux_quizz.id}) }}" class="btn btn-primary">Consulter</a>
-                    <a href="{{ path('jeux_quizz_edit', {'id': jeux_quizz.id}) }}" class="btn btn-warning mt-3">Modifier</a>
+                    <a href="{{ path('jeux_quizz_edit', {'id': jeux_quizz.id}) }}" class="btn btn-warning">Modifier</a>
                 </td>
             </tr>
         {% else %}

@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use App\Entity\JeuxQuizz;
 use App\Entity\User;
+use App\Entity\ThemeQuizz;
 use App\Form\EditProfileType;
 use App\Repository\CommandeRepository;
 use Symfony\Component\HttpFoundation\Request;
@@ -55,12 +56,15 @@ class PagesController extends AbstractController
     }
 
     /**
-     * @Route("/jeux/geographie", name="geographie")
+     * @Route("/theme/{id}", name="theme_quizz_page")
      */
-    public function geographie(JeuxQuizzRepository $jeuxQuizzRepository): Response
+    public function themeQuizzPage(ThemeQuizz $themeQuizz, JeuxQuizzRepository $jeuxQuizzRepository): Response
     {
-        return $this->render('pages/jeux/geographie/geographie.html.twig', [
-            'jeux_quizzs' => $jeuxQuizzRepository->findAll(),
+        return $this->render('pages/jeux/themequizz.html.twig', [
+            'themeQuizz' => $themeQuizz,
+            'jeux_quizzs' => $jeuxQuizzRepository->findBy([
+                'themeQuizz' => $themeQuizz
+            ]),
         ]);
     }
 
@@ -132,11 +136,14 @@ class PagesController extends AbstractController
     }
 
     /**
-     * @Route("/jeux/geographie/capitale", name="geographie_capitale")
+     * @Route("/jeux/quizz/{id}", name="jeux_quizz_page")
      */
-    public function geographieCapitale(): Response
+    public function jeuxQuizzPage(ThemeQuizz $themeQuizz, JeuxQuizz $jeuxQuizz): Response
     {
-        return $this->render('pages/jeux/geographie/geographie_capitale.html.twig');
+        return $this->render('pages/jeux/jeuxquizz.html.twig', [
+            'themeQuizz' => $themeQuizz,
+            'jeuxQuizz' => $jeuxQuizz
+        ]);
     }
 
     /**

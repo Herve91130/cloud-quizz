@@ -1,6 +1,6 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Géographie{% endblock %}
+{% block title %}{{ themeQuizz.titre }}{% endblock %}
 
 {% block body %}
 <main>
@@ -15,8 +15,8 @@
                         <img src="{{ asset(jeux_quizz.image) }}" class="card-img-top" alt="{{ jeux_quizz.ImageAlt }}">
                         <div class="card-body">
                             <p class="card-text"></p>
-                            <a href="{{ path(jeux_quizz.lien) }}" class="btn btn-primary d-flex justify-content-center">{{ jeux_quizz.Jeux }}</a>
-                            <a href="{{ path(jeux_quizz.LienForum, { 'id': jeux_quizz.id }) }}" class="mt-2 btn btn-primary d-flex justify-content-center">Forum</a>
+                            <a href="{{ path('jeux_quizz_page', {id: jeux_quizz.id}) }}" class="btn btn-primary d-flex justify-content-center">{{ jeux_quizz.Jeux }}</a>
+                            <a href="{{ path('jeux_forum', {id: jeux_quizz.id }) }}" class="mt-2 btn btn-primary d-flex justify-content-center">Forum</a>
                         </div>
                     </div>
                 </div>

@@ -25,11 +25,6 @@ class ThemeQuizz
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $lien;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
     private $image;
 
     /**
@@ -50,18 +45,6 @@ class ThemeQuizz
     public function setTitre(string $titre): self
     {
         $this->titre = $titre;
-
-        return $this;
-    }
-
-    public function getLien(): ?string
-    {
-        return $this->lien;
-    }
-
-    public function setLien(string $lien): self
-    {
-        $this->lien = $lien;
 
         return $this;
     }

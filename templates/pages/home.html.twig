@@ -1,7 +1,5 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Se connecter{% endblock %}
-
 {% block header %}{% include "parts/_header.html.twig" %}{% endblock %}  
 
 {% block body %}
@@ -17,7 +15,7 @@
                         <img src="{{ asset(theme_quizz.image) }}" class="card-img-top" alt="{{ theme_quizz.ImageAlt }}">
                         <div class="card-body">
                             <p class="card-text"></p>
-                            <a href="{{ theme_quizz.lien }}" class="btn btn-primary d-flex justify-content-center">{{ theme_quizz.titre }}</a>
+                            <a href="{{ path('theme_quizz_page', {id: theme_quizz.id}) }}" class="btn btn-primary d-flex justify-content-center">{{ theme_quizz.titre }}</a>
                         </div>
                     </div>
                 </div>

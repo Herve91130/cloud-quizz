@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Forum : Géographie capitale{% endblock %}
+{% block title %}Forum: {{ jeuxQuizz.themeQuizz.titre }} {{ jeuxQuizz.Jeux }}{% endblock %}
 
 {% block body %}
 <main>
@@ -61,6 +61,7 @@
 				        </div>
                     {% endif %}
                 </div>
+                <a href="{{ path('theme_quizz_page', {id: jeuxQuizz.themeQuizz.id}) }}" class="btn btn-jeuxquizz btn-danger">Retour aux quizz</a>
 			</div>
         </div>
     </div>

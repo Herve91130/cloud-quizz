@@ -23,22 +23,12 @@ class JeuxQuizz
      * @ORM\ManyToOne(targetEntity=ThemeQuizz::class)
      * @ORM\JoinColumn(nullable=false)
      */
-    private $themeQuizz_id;
+    private $themeQuizz;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
     private $Jeux;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $lien;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $lien_forum;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -65,14 +55,14 @@ class JeuxQuizz
         return $this->id;
     }
 
-    public function getThemeQuizzId(): ?ThemeQuizz
+    public function getThemeQuizz(): ?ThemeQuizz
     {
-        return $this->themeQuizz_id;
+        return $this->themeQuizz;
     }
 
-    public function setThemeQuizzId(?ThemeQuizz $themeQuizz_id): self
+    public function setThemeQuizz(?ThemeQuizz $themeQuizz): self
     {
-        $this->themeQuizz_id = $themeQuizz_id;
+        $this->themeQuizz = $themeQuizz;
 
         return $this;
     }
@@ -92,30 +82,6 @@ class JeuxQuizz
     public function __toString()
     {
         return $this->Jeux;
-    }
-
-    public function getLien(): ?string
-    {
-        return $this->lien;
-    }
-
-    public function setLien(string $lien): self
-    {
-        $this->lien = $lien;
-
-        return $this;
-    }
-
-    public function getLienForum(): ?string
-    {
-        return $this->lien_forum;
-    }
-
-    public function setLienForum(string $lien_forum): self
-    {
-        $this->lien_forum = $lien_forum;
-
-        return $this;
     }
 
     public function getImage(): ?string

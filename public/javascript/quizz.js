@@ -54,7 +54,7 @@ class Quiz {
         })
 
         //Récupération des données
-        .then((data) => {
+        .then ((data) => {
             this.currentQuestion = new Question(data.id, data.text, data.choices, data.answer);
             afterGuess();
         });
@@ -64,55 +64,3 @@ class Quiz {
         return this.currentQuestionIndex >= this.totalLength;
     }
 }
-
-const display = {
-    elementShown: function (id, text) {
-        let element = document.getElementById(id);
-        element.innerHTML = text;
-    },
-    endQuiz: function () {
-        endQuizHTML = `
-        <h1 class="h1-jeux text-center"><span class="j">Q</span><span class="r">UI</span><span class="m">Z</span><span class="b">Z</span> terminé !</h1>
-        <h3 class="h3-jeux text-center"> Votre score est de : ${quiz.score} / ${quiz.totalLength}</h3>`;
-        this.elementShown("quiz", endQuizHTML);
-    },
-    question: function () {
-        this.elementShown("question", quiz.getCurrentQuestion().text);
-    },
-    choices: function () {
-        let choices = quiz.getCurrentQuestion().choices;
-
-        guessHandler = (id, guess) => {
-            document.getElementById(id).onclick = function () {
-                quiz.guess(guess, () => {
-                    quizApp();
-                });
-            }
-        }
-        // affichage choix + prise en compte du choix
-        for (let i = 0; i < choices.length; i++) {
-            this.elementShown("choice" + i, choices[i]);
-            guessHandler("guess" + i, choices[i]);
-        }
-    },
-    progress: function () {
-        let currentQuestionNumber = quiz.currentQuestionIndex + 1;
-        this.elementShown("progress", "Question " + currentQuestionNumber + " sur " + quiz.totalLength);
-    },
-};
-
-// Game logic
-quizApp = () => {
-    if (quiz.hasEnded()) {
-        display.endQuiz();
-    } else {
-        display.question();
-        display.choices();
-        display.progress();
-    }
-}
-// Create Quiz
-let quiz = new Quiz();
-quiz.init(1, () => {
-    quizApp();
-});

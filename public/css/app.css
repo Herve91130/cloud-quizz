@@ -20,6 +20,10 @@ body {
 /*** HEADER  ***/
 /***************/
 
+.dropdown-toggle {
+    cursor: pointer;
+}
+
 /* CADRES BOUTONS MENU */
 
 .nav-item1 {
@@ -359,10 +363,6 @@ a {
 
 /* PAGE JEUX */
 
-.h1-jeux{
-    margin-bottom: 3em;
-}
-
 .h3-jeux {
     color: black;
 }
@@ -405,6 +405,16 @@ body .container  .choices-jeux .button-jeux:active {
 #progress {
     font-size: 1.3rem;
     color: black;
+}
+
+.row-jeuxquizz {
+    justify-content: center;
+    display: flex;
+    margin-top: 1em;
+}
+
+.btn-jeuxquizz {
+    margin: 1em;
 }
 
 /* PAGE CGU */

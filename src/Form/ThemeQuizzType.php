@@ -13,7 +13,6 @@ class ThemeQuizzType extends AbstractType
     {
         $builder
             ->add('titre')
-            ->add('lien')
             ->add('image')
             ->add('image_alt')
         ;
